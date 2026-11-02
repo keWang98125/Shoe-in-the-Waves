@@ -1,0 +1,31 @@
+{
+  "source": "cloudtilt / Nathan Arditti / https://superspl.at/scene/5c872c69",
+  "title": "cloudtilt",
+  "author": "Nathan Arditti",
+  "source_url": "https://superspl.at/scene/5c872c69",
+  "license": "CC BY 4.0",
+  "source_gaussians": 249030,
+  "render_gaussians": 239040,
+  "source_to_world_scale": 0.5449872410431404,
+  "source_flipped_yz_origin": [
+    -0.002526360943913508,
+    0.0025008173391688616,
+    0.007020683273673035
+  ],
+  "sole_height": 0,
+  "world_bounds": [
+    [
+      -0.15170084072707637,
+      -0.0034666148246942914,
+      -0.059268853622824164
+    ],
+    [
+      0.1523576822762735,
+      0.13695038428893716,
+      0.06067131478590458
+    ]
+  ],
+  "scale_note": "Shoe length assumed 0.30 m for this demo; not a measured metric calibration.",
+  "collision_note": "Static closed convex proxy with an extended underside; no shoe deformation, porosity or floating.",
+  "appearance_note": "SH0 colors and original anisotropic scales/rotations; source PLY retained unchanged."
+}

@@ -1,0 +1,6 @@
+Title: cloudtilt
+Author: Nathan Arditti (https://superspl.at/user/nathanar)
+Source: https://superspl.at/scene/5c872c69
+License: CC Attribution (Creative Commons Attribution)
+License URL: http://creativecommons.org/licenses/by/4.0/
+Requirements: Author must be credited. Commercial use is allowed.

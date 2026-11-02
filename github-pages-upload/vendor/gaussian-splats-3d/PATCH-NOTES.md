@@ -1,0 +1,1 @@
+GaussianSplats3D 0.4.7, MIT. Local patch: when sharedMemoryForWorkers=false, select the non-shared WASM variant and import non-shared WebAssembly memory. This enables ordinary static hosting without COOP/COEP headers. Generated reproducibly by tools/build_site.mjs.

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>鞋边的水 · SPH × 3DGS</title><link rel="icon" href="data:,"><link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"../vendor/three/build/three.module.js","three/addons/":"../vendor/three/examples/jsm/","@mkkellogg/gaussian-splats-3d":"../vendor/gaussian-splats-3d/gaussian-splats-3d.module.js"}}</script></head>
+<body><header><div><small>SPH × GAUSSIAN SPLATTING</small><h1>鞋边的水</h1><p>真实高斯鞋子 · SPH 水波 · 随波变化的鞋子倒影</p></div><span id="status" role="status">正在载入高斯与水面…</span></header>
+<main><div class="toolbar"><button id="play">▶ 播放水波</button><button id="low">低角度看倒影</button><button id="overview">全景</button><label><input id="water" type="checkbox" checked>水面</label><label><input id="reflect" type="checkbox" checked>鞋子倒影</label><label><input id="shoe" type="checkbox" checked>鞋子</label><label><input id="collider" type="checkbox">碰撞代理</label><button id="save">保存画面</button></div>
+<section class="viewport"><div id="stage"></div><div class="badge">cloudtilt · 真实 3DGS 资产</div><div class="caption">拖动旋转 · 滚轮缩放 · 倒影也由高斯鞋子渲染</div><div id="notice" hidden></div></section>
+<div class="transport"><span>SPH 时间</span><input id="time" type="range" min="0" max="48" step="1" value="0"><output id="clock">0.00 s</output></div>
+<section class="settings"><label>水位微调 <input id="level" type="range" min="-0.012" max="0.012" step="0.001" value="0"><output id="level-value">0 mm</output></label><label>倒影扭曲 <input id="distortion" type="range" min="0" max="0.3" step="0.01" value="0.12"></label><label>水面粗糙度 <input id="roughness" type="range" min="0.02" max="0.35" step="0.01" value="0.06"></label></section>
+<section class="details"><p id="metrics">正在读取物理状态…</p><p>鞋底基准为 0；水面平均高度已对齐到鞋底，波峰和波谷会在其附近变化。水波来自 SPlisHSPlasH 离线求解；鞋子保持静止，水与封闭凸包代理碰撞。鞋子外观与倒影均来自原高斯数据，未用鞋子网格代替倒影。</p><p>目前采用水平面镜像高斯与 SPH 法线扰动，适用于小波浪；尚未实现逐点反射光线追踪、真实折射、鞋子吸水或变形。展示将鞋长假设为 30 cm，未经实测标定。播放到末尾会重新开始。</p><p>资产：<a href="https://superspl.at/scene/5c872c69" target="_blank" rel="noopener">cloudtilt / Nathan Arditti</a> · CC BY 4.0。保留原扫描数据。<a href="README.md" target="_blank">实现与复现说明</a></p></section></main>
+<script type="module">
+const status=document.querySelector('#status'),notice=document.querySelector('#notice');
+if(location.protocol==='file:'){
+  status.textContent='请使用启动器，或打开已发布的网站';notice.hidden=false;
+  notice.innerHTML='<strong>你现在直接打开了 HTML 文件</strong><p>本地请关闭此页，双击 on 文件夹里的“启动鞋边水面倒影.cmd”。服务启动后会自动打开三维演示。</p><p><a href="http://127.0.0.1:8771/shoe_lab/index.html">本地服务已启动？点击这里打开演示 →</a></p><p>也可把 docs 文件夹发布到 GitHub Pages，通过网站链接查看。</p>';
+  document.querySelectorAll('button,input').forEach(control=>control.disabled=true);
+}else{
+  import('./viewer.mjs').catch(error=>{
+    status.textContent='加载失败：'+error.message;notice.hidden=false;
+    notice.textContent='三维演示未能启动：'+error.message+'。请刷新页面，或使用最新版启动器。';console.error(error);
+  });
+}
+</script></body></html>
